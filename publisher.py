@@ -1,12 +1,12 @@
 import paho.mqtt.client as mqtt
 import random
 #externalHosts
-broker="40.81.27.10"
+broker="xx.81.xx.10"
 #mqtt_port
 mqtt_port=1883
 #mqtt_username
-username="f456d95d-b76f-43e9-8b35-bac8383bf941:60e80e22-c438-4aee-8a0f-bbc791afd307"
-password="vTY8ix2esP8VJZXBb32Z5JNwn"
+username="xxxxxxxx-b76f-43e9-8b35-xxxxxxxxf941:xxxxxxxx-c438-4aee-8a0f-bbc791afd307"
+password="xxxxxxxxsP8VJZXBb32Z5JNwn"
 def on_publish(client,userdata,result):             #create function for callback
     print("data published")
    
