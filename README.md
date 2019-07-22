@@ -1,7 +1,7 @@
-# Example-python-Iothub
+# Example-python-Iothub-MongoDB
 
 
-This is WIES-PaaS iothub example-code include the sso and rabbitmq service。
+This is WIES-PaaS example-code include the mongodb and rabbitmq service。
 
 **https://wise-paas.advantech.com/en-us**
 
@@ -20,7 +20,7 @@ This is WIES-PaaS iothub example-code include the sso and rabbitmq service。
 open the **`manifest.yml`** and editor the application name to yours，because the appication can't duplicate。
 
     #cf push {application name}
-    cf push python-demo-try
+    cf push python-demo-mongodb
     
     #get the application environment
     cf env {application name} > env.json 
@@ -36,7 +36,7 @@ Edit the **publisher.py** `broker、port、username、password` you can find in 
 open two terminal
     
     #cf logs {application name}
-    cf logs python-demo-try
+    cf logs python-demo-mongodb
 
 .
 
