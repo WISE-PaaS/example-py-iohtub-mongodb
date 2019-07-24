@@ -29,7 +29,12 @@ open the **`manifest.yml`** and editor the application name to yours，because t
     #get the application environment
     cf env {application name} > env.json 
     
+
+open **`templates/index.html`**
     
+    #change this **`python-demo-jimmy`** to your **application name**
+    var ssoUrl = myUrl.replace('python-demo-jimmy', 'portal-sso');
+
 Edit the **publisher.py** `broker、port、username、password` you can find in env.json
 
 * bokrer:"VCAP_SERVICES => p-rabbitmq => externalHosts"
