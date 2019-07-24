@@ -34,8 +34,8 @@ Open the manifest.yml and **edit** the application name to yours，because the a
 
 open templates/index.html
 
-#change this **`python-demo-jimmy`** to your **application name**
-var ssoUrl = myUrl.replace('python-demo-jimmy', 'portal-sso');
+    #change this **`python-demo-jimmy`** to your **application name**
+    var ssoUrl = myUrl.replace('python-demo-jimmy', 'portal-sso');
 
 When we login，we need to push our application to the WISE-PaaS
 
