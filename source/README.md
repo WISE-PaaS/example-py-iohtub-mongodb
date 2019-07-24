@@ -32,6 +32,11 @@ First，we need to use cf to login to our WISE-PaaS ，if you can’t login you 
 
 Open the manifest.yml and **edit** the application name to yours，because the application name can't duplicate。
 
+open templates/index.html
+
+#change this **`python-demo-jimmy`** to your **application name**
+var ssoUrl = myUrl.replace('python-demo-jimmy', 'portal-sso');
+
 When we login，we need to push our application to the WISE-PaaS
 
     #cf push {application name}
