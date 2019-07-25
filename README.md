@@ -19,6 +19,13 @@ This is WIES-PaaS example-code include the mongodb and rabbitmq service。
 
 open the **`manifest.yml`** and editor the application name to yours，because the appication can't duplicate。
 
+ 
+
+open **`templates/index.html`**
+    
+    #change this **`python-demo-jimmy`** to your **application name**
+    var ssoUrl = myUrl.replace('python-demo-jimmy', 'portal-sso');
+
 (you need to check the service name in `index.py` and WISE-PaaS)
 ![https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/service-name.PNG](https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/service-name.PNG)
 ![https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/code_image.PNG](https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/code_image.PNG)
@@ -28,12 +35,7 @@ open the **`manifest.yml`** and editor the application name to yours，because t
     
     #get the application environment
     cf env {application name} > env.json 
-    
-
-open **`templates/index.html`**
-    
-    #change this **`python-demo-jimmy`** to your **application name**
-    var ssoUrl = myUrl.replace('python-demo-jimmy', 'portal-sso');
+   
 
 Edit the **publisher.py** `broker、port、username、password` you can find in env.json
 
