@@ -18,7 +18,11 @@ This is WIES-PaaS example-code include the mongodb and rabbitmq service。
 
 
 open the **`manifest.yml`** and editor the application name to yours，because the appication can't duplicate。
+check the service instance name in **manifest.yml** and **WISE-PaaS**
 
+![https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/MANI.PNG](https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/MANI.PNG)
+
+![https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/service_list_instance_name.PNG](https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/service_list_instance_name.PNG)
  
 
 open **`templates/index.html`**
