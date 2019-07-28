@@ -22,6 +22,13 @@ python3
 ![](https://cdn-images-1.medium.com/max/2000/1*iJwh3dROjmveF8x1rC6zag.png)
 
 
+python3 package(those library you can try application in local):
+
+    pip3 install paho-mqtt
+    pip3 install Flask
+    pip3 install flask_pymongo
+
+
 ## Download this file
 
     git clone this respository
