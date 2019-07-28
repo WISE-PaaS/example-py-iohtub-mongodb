@@ -7,7 +7,7 @@ This is WIES-PaaS example-code include the mongodb and rabbitmq service。
 
 
 
-## Quick Start
+### Quick Start
 
 ## Environment Prepare
 
@@ -22,13 +22,14 @@ python3
 ![](https://cdn-images-1.medium.com/max/2000/1*iJwh3dROjmveF8x1rC6zag.png)
 
 
-Download this file
+## Download this file
 
     git clone this respository
     
-    #cf login -skip-ssl-validation -a {api.domain_name}  -u "account" -p "password"
-    
-    cf login –skip-ssl-validation -a api.wise-paas.io -u xxxxx@advtech.com.tw -p xxxxxx
+![Imgur](https://i.imgur.com/JNJmxFy.png)
+
+    #cf login -a api.{domain name} -u {WISE-PaaS/EnSaaS account} -p {WISE-PaaS/EnSaaS password}
+    cf login -a api.wise-paas.io -u xxxxx@advantech.com -p xxxxxxxx
     
     #check the cf status
     cf target
