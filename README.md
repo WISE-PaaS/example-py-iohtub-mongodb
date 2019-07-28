@@ -24,8 +24,11 @@ python3
 
 python3 package(those library you can try application in local):
 
+    #mqtt
     pip3 install paho-mqtt
+    #python-backend
     pip3 install Flask
+    #python mongodb library
     pip3 install flask_pymongo
 
 
@@ -45,9 +48,9 @@ python3 package(those library you can try application in local):
 open the **`manifest.yml`** and editor the application name to yours，because the appication can't duplicate。
 check the service instance name in **manifest.yml** and **WISE-PaaS**
 
-![https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/MANI.PNG](https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/MANI.PNG)
+[Imgur](https://i.imgur.com/2A2HDzz.png)
 
-![https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/service_list_instance_name.PNG](https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/service_list_instance_name.PNG)
+![Imgur](https://i.imgur.com/VVMcYO8.png)
  
 
 open **`templates/index.html`**
@@ -56,7 +59,9 @@ open **`templates/index.html`**
     var ssoUrl = myUrl.replace('python-demo-jimmy', 'portal-sso');
 
 (you need to check the service name in `index.py` and WISE-PaaS)
-![https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/service-name.PNG](https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/service-name.PNG)
+
+![Imgur](https://i.imgur.com/6777rmg.png)
+
 ![https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/code_image.PNG](https://github.com/WISE-PaaS/example-python-iohtub-mongodb/blob/master/source/code_image.PNG)
 
     #cf push {application name}
