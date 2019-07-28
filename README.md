@@ -5,7 +5,23 @@ This is WIES-PaaS example-code include the mongodb and rabbitmq service。
 
 **https://wise-paas.advantech.com/en-us**
 
+
+
 ## Quick Start
+
+## Environment Prepare
+
+cf-cli
+
+[https://docs.cloudfoundry.org/cf-cli/install-go-cli.html](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html?source=post_page---------------------------)
+
+python3
+
+[https://www.python.org/downloads/](https://www.python.org/downloads/?source=post_page---------------------------)
+
+![](https://cdn-images-1.medium.com/max/2000/1*iJwh3dROjmveF8x1rC6zag.png)
+
+
 
     git clone this respository
     
