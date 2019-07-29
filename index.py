@@ -30,7 +30,7 @@ vcap_services = os.getenv('VCAP_SERVICES')
 vcap_services_js = json.loads(vcap_services)
 
 # mqtt
-credentials = vcap_services_js[IOTHUB_SERVICE_NAME][0]['credentials']
+credentials = vcap_services_js[IOTHUB_SERVICE_NAME][0]['credentials']['protocols']
 mqtt_credential = credentials['mqtt']
 broker = mqtt_credential['host']
 username = mqtt_credential['username'].strip()
