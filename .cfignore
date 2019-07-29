@@ -1,4 +1,4 @@
 env.json
-
+.vscode/
 getCredential.py
 publisher.py
