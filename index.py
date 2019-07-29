@@ -6,7 +6,7 @@ import os
 # mongodb need
 from flask_pymongo import PyMongo
 from flask import jsonify, request, abort
-import time
+import datetime
 app = Flask(__name__)
 
 # port from cloud environment variable or localhost:3000
@@ -55,7 +55,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print(msg.topic+','+msg.payload.decode())
-    ti = int(round(time.time() * 1000))
+    ti =  datetime.datetime.now()
     topic = msg.topic
     data = msg.payload.decode()
     temp_id = collection.insert({'date': ti, 'topic': topic, 'data': data})
@@ -92,7 +92,7 @@ def insert_data():
 
     if not request.json:
         abort(400)
-    ti = int(round(time.time() * 1000))
+    ti = datetime.datetime.now()
     topic = request.json['topic']
     data = request.json['data']
     temp_id = collection.insert({'date': ti, 'topic': topic, 'data': data})
