@@ -230,6 +230,7 @@ Now，we can push it。
 We also change the publisher.py to send a random data 。
 
 <iframe src="https://medium.com/media/e99d30c129cf563ed20c940c9a0763ad" frameborder=0></iframe>
+
 ```
 import paho.mqtt.client as mqtt
 import random
