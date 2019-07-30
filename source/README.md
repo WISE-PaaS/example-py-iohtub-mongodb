@@ -112,8 +112,8 @@ services:
 Now，we can editor our index.py，add MongoDB to our code，we also need to change the on_message function than save data to the MongoDB。
 
 <iframe src="https://medium.com/media/3c315d90228f1fa72052006dd23035f2" frameborder=0></iframe>
-```py
 
+```py
 from flask import Flask,render_template
 import json
 import paho.mqtt.client as mqtt
