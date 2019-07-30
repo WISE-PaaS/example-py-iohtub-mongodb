@@ -74,7 +74,11 @@ We want to use flask_pymongothis library to implement our MongoDB application，
 open the requirements.txt and add the flask_pymongo
 
 <iframe src="https://medium.com/media/597fed8b058aed05fd67132df3d06343" frameborder=0></iframe>
-
+```py
+Flask
+paho-mqtt
+flask_pymongo
+```
 and we need to bind our service instance in WISE-PaaS，first we need to open our WISE-PaaS/EnSaaS
 
 ![](https://cdn-images-1.medium.com/max/2542/1*U4IMFUoNtaUguhkytLdiwQ.png)
