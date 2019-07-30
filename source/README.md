@@ -74,11 +74,13 @@ We want to use flask_pymongothis library to implement our MongoDB application，
 open the requirements.txt and add the flask_pymongo
 
 <iframe src="https://medium.com/media/597fed8b058aed05fd67132df3d06343" frameborder=0></iframe>
-```py
+
+```
 Flask
 paho-mqtt
 flask_pymongo
 ```
+
 and we need to bind our service instance in WISE-PaaS，first we need to open our WISE-PaaS/EnSaaS
 
 ![](https://cdn-images-1.medium.com/max/2542/1*U4IMFUoNtaUguhkytLdiwQ.png)
@@ -89,9 +91,131 @@ open our manifest.yml we need to add the mongodbinstance name to our file，chan
 
 <iframe src="https://medium.com/media/12d55e61fe68a56cf018a16a1c1415a7" frameborder=0></iframe>
 
+```
+---
+applications:
+  #application name
+- name: python-demo-mongodb
+  #memory you want to give to appliaction
+  memory: 256MB
+  #disk you want to give to appliaction
+  disk_quota: 256MB
+  #help use compile the file when you push to cloud
+  buildpack: python_buildpack
+  #let the backend application begin。
+  command: python index.py
+services:
+- rabbitmq
+- mongodb
+```
+
 Now，we can editor our index.py，add MongoDB to our code，we also need to change the on_message function than save data to the MongoDB。
 
 <iframe src="https://medium.com/media/3c315d90228f1fa72052006dd23035f2" frameborder=0></iframe>
+```py
+
+from flask import Flask,render_template
+import json
+import paho.mqtt.client as mqtt
+import os
+
+#mongodb need
+from flask_pymongo import PyMongo
+from flask import jsonify,request,abort
+import time
+app = Flask(__name__)
+
+#port from cloud environment variable or localhost:3000
+port = int(os.getenv("PORT", 3000))
+
+@app.route('/',methods=['GET'])
+def root():
+
+    if(port==3000):
+        return 'hello world! i am in the local'
+    elif(port==int(os.getenv("PORT"))):
+        return render_template('index.html')
+        
+
+#application environment
+vcap_services=os.getenv('VCAP_SERVICES')
+vcap_services_js = json.loads(vcap_services)
+
+#mqtt
+service_name='p-rabbitmq' 
+broker    = vcap_services_js[service_name][0]['credentials']['protocols']['mqtt']['host']
+username  = vcap_services_js[service_name][0]['credentials']['protocols']['mqtt']['username'].strip()
+password  = vcap_services_js[service_name][0]['credentials']['protocols']['mqtt']['password'].strip()
+mqtt_port = vcap_services_js[service_name][0]['credentials']['protocols']['mqtt']['port']
+
+
+#mongodb
+mongodb_service_name='mongodb-innoworks'
+uri = vcap_services_js[mongodb_service_name][0]['credentials']['uri']
+app.config['MONGO_URI'] = uri
+mongo = PyMongo(app)
+collection = mongo.db.temp
+
+#mqtt
+def on_connect(client, userdata, flags, rc):
+  print("Connected with result code "+str(rc))
+  client.subscribe("/hello")
+  print('subscribe on /hello')
+  
+def on_message(client, userdata, msg):
+  print(msg.topic+','+msg.payload.decode())
+  ti = int(round(time.time() * 1000))
+  topic = msg.topic
+  data = msg.payload.decode()
+  temp_id = collection.insert({'date':ti,'topic':topic,'data':data})
+  new_temp  =collection.find_one({'_id':temp_id})
+  output = {'date':new_temp['date'],'topic':new_temp['topic'],'data':new_temp['data']}
+  
+  print(output)
+  
+
+
+client = mqtt.Client()
+
+client.username_pw_set(username,password)
+client.on_connect = on_connect
+client.on_message = on_message
+
+client.connect(broker,mqtt_port,60)
+client.loop_start()
+
+
+#Mongodb route
+@app.route('/temp',methods=['GET'])
+def get_all_temps():
+  
+  output = []
+  for s in collection.find():
+    
+    output.append({'date':s['date'],'topic':s['topic'],'data':s['data']})
+  return jsonify({'rsult':output})
+  
+@app.route('/insert',methods=['POST'])
+def insert_data():
+  
+  if not request.json:
+        abort(400)
+  ti = int(round(time.time() * 1000))
+  topic = request.json['topic']
+  data = request.json['data']
+  temp_id = collection.insert({'date':ti,'topic':topic,'data':data})
+  new_temp  =collection.find_one({'_id':temp_id})
+  output = {'date':new_temp['date'],'topic':new_temp['topic'],'data':new_temp['data']}
+  
+  return jsonify({'retult':output})
+  
+  
+
+if __name__ == '__main__':
+    # Run the app, listening on all IPs with our chosen port number
+    app.run(host='0.0.0.0', port=port)
+
+```
 
 Because we already bind the MongoDB Service Instance so we can use the os.getenv to get the application environment in WISE-PaaS， uri is our database location，and we use two router /temp (get all data) /insert (insert data) can help we debug。
 
@@ -106,6 +230,27 @@ Now，we can push it。
 We also change the publisher.py to send a random data 。
 
 <iframe src="https://medium.com/media/e99d30c129cf563ed20c940c9a0763ad" frameborder=0></iframe>
+```
+import paho.mqtt.client as mqtt
+import random
+#externalHosts
+broker="XX.81.X7.10"
+#mqtt_port
+mqtt_port=1883
+#mqtt_username
+username="XXXXXXXX-XXXX-43e9-8b35-bac8383bf941:60e80e22-c438-4aee-8a0f-bbc791afd307"
+password="XXXXXXXXXXXXXZXBb32Z5JNwn"
+def on_publish(client,userdata,result):             #create function for callback
+    print("data published")
+   
+client= mqtt.Client()                           #create client object
+
+client.username_pw_set(username,password)
+
+client.on_publish = on_publish                          #assign function to callback
+client.connect(broker,mqtt_port)                                 #establish connection
+client.publish("/hello",random.randint(10,30))    
+```
 
 ![](https://cdn-images-1.medium.com/max/2000/1*t9Ctvi9lAXX9p88vIhp7Fw.png)
 
