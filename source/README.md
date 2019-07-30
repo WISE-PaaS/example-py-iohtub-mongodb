@@ -65,7 +65,7 @@ open two terminal
 
     python publish.py
 
-![](https://cdn-images-1.medium.com/max/2466/1*WzwjNwVA7QMZRJn7bGH27Q.png)
+<!--(https://cdn-images-1.medium.com/max/2466/1*WzwjNwVA7QMZRJn7bGH27Q.png)-->
 
 ## Step 3:MongoDB setup
 
@@ -73,7 +73,7 @@ We want to use flask_pymongothis library to implement our MongoDB application，
 
 open the requirements.txt and add the flask_pymongo
 
-<iframe src="https://medium.com/media/597fed8b058aed05fd67132df3d06343" frameborder=0></iframe>
+<!--<iframe src="https://medium.com/media/597fed8b058aed05fd67132df3d06343" frameborder=0></iframe>-->
 
 ```
 Flask
@@ -89,7 +89,7 @@ the mongodb service instance already exist Service Instance List，or you can ad
 
 open our manifest.yml we need to add the mongodbinstance name to our file，change the memory and disk_quota to 256M。
 
-<iframe src="https://medium.com/media/12d55e61fe68a56cf018a16a1c1415a7" frameborder=0></iframe>
+<!--<iframe src="https://medium.com/media/12d55e61fe68a56cf018a16a1c1415a7" frameborder=0></iframe>-->
 
 ```
 ---
@@ -111,7 +111,7 @@ services:
 
 Now，we can editor our index.py，add MongoDB to our code，we also need to change the on_message function than save data to the MongoDB。
 
-<iframe src="https://medium.com/media/3c315d90228f1fa72052006dd23035f2" frameborder=0></iframe>
+<!--<iframe src="https://medium.com/media/3c315d90228f1fa72052006dd23035f2" frameborder=0></iframe>-->
 
 ```py
 from flask import Flask,render_template
@@ -229,7 +229,7 @@ Now，we can push it。
 
 We also change the publisher.py to send a random data 。
 
-<iframe src="https://medium.com/media/e99d30c129cf563ed20c940c9a0763ad" frameborder=0></iframe>
+<!--<iframe src="https://medium.com/media/e99d30c129cf563ed20c940c9a0763ad" frameborder=0></iframe>-->
 
 ```
 import paho.mqtt.client as mqtt
