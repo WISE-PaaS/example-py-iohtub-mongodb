@@ -2,9 +2,9 @@
 
 This is WIES-PaaS example-code include the mongodb and rabbitmq service。
 
-[cf-introduce](https://advantech.wistia.com/medias/ll0ov3ce9e)
+[cf-introduce Training Video](https://advantech.wistia.com/medias/ll0ov3ce9e)
 
-[IotHub](https://advantech.wistia.com/medias/up3q2vxvn3)
+[IotHub Training Video](https://advantech.wistia.com/medias/up3q2vxvn3)
 
 ### Quick Start
 
@@ -173,6 +173,16 @@ def insert_data():
 
     return jsonify({'retult': output})
 
+```
+
+#### requirements.txt
+
+Thie file help buildpack download the package for our application in WISE-PaaS。
+
+```
+Flask
+paho-mqtt
+flask_pymongo
 ```
 
 open the **`manifest.yml`** and editor the application name to yours，because the appication can't duplicate。
