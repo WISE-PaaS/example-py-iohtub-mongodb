@@ -31,7 +31,7 @@ python3 package(those library you can try application in local):
 
 ## Download this file
 
-    git clone this respository
+    git clone https://github.com/WISE-PaaS/example-py-iohtub-mongodb.git
 
 ![Imgur](https://i.imgur.com/JNJmxFy.png)
 
